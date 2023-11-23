@@ -4,7 +4,8 @@ import pandas as pd
 import streamlit as st
 
 """
-# Test your knowledge of the main concepts of the QESD Platform
+# Welcome
+## Test your knowledge of the main concepts of the QESD Platform
 """
 # Import the necessary library
 import streamlit as st
@@ -38,16 +39,6 @@ def quiz_app():
                 score += 1
             else:
                 st.error("Incorrect. Try again.")
-    grade = (score / len(questions)) * 100
-    st.write(f"Your grade is {grade}%")
-    if grade >= 80:
-        st.write("Congratulations, you passed!")
-    else:
-        st.write("Sorry, you did not pass.")
-
-# Run the app
-if __name__ == "__main__":
-    quiz_app()
     st.write(f"Your score is {score}/{len(questions)}")
 
 # Run the app
