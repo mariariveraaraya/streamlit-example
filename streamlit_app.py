@@ -5,7 +5,6 @@ import streamlit as st
 
 """
 # Welcome
-## Test your knowledge of the main concepts of the QESD Platform
 """
 # Import the necessary library
 import streamlit as st
