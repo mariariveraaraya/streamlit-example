@@ -23,15 +23,23 @@ questions = {
     }
 }
 # Create the quiz app
+
 def quiz_app():
     st.title("Quiz App")
-    for question, answers in questions.items():
+    if "score" not in st.session_state:
+        st.session_state.score = 0
+    for i, (question, answers) in enumerate(questions.items()):
         st.subheader(question)
-        user_answer = st.radio("", list(answers.keys()), key=question)
-    if st.button("Submit") and all(any(answers.values()) for answers in user_answer.values()):
-        score = sum(all(user_answer[question][option] == correct for option, correct in answers.items()) for question, answers in questions.items())
-        grade = (score / len(questions)) * 100
-        st.write(f"Your grade is {grade}%")
+        user_answers = {option: st.checkbox(option, key=f"{i}_{option}") for option in answers.keys()}
+        if st.button("Submit", key=f"button_{i}"):
+            correct = all(user_answers[option] == correct for option, correct in answers.items())
+            if correct:
+                st.success("Correct!")
+                st.session_state.score += 1
+            else:
+                st.error("Incorrect. Try again.")
+    grade = (st.session_state.score / len(questions)) * 100
+    st.write(f"Your grade is {grade}%")
 
 # Run the app
 if __name__ == "__main__":
