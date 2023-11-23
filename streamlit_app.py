@@ -12,29 +12,34 @@ forums](https://discuss.streamlit.io).
 
 In the meantime, below is an example of what you can do with just a few lines of code:
 """
+# Define the questions and answers
+questions = {
+    "What is 2 + 2?": {
+        "1": False,
+        "2": False,
+        "3": False,
+        "4": True
+    },
+    "What is 3 * 3?": {
+        "6": False,
+        "9": True,
+        "12": False,
+        "15": False
+    }
+}
 
-num_points = st.slider("Number of points in spiral", 1, 10000, 1100)
-num_turns = st.slider("Number of turns in spiral", 1, 300, 31)
+# Create the quiz app
+def quiz_app():
+    st.title("Quiz App")
+    for question, answers in questions.items():
+        st.subheader(question)
+        user_answer = st.radio("", list(answers.keys()))
+        if st.button("Submit"):
+            if answers[user_answer]:
+                st.success("Correct!")
+            else:
+                st.error("Incorrect. Try again.")
 
-indices = np.linspace(0, 1, num_points)
-theta = 2 * np.pi * num_turns * indices
-radius = indices
-
-x = radius * np.cos(theta)
-y = radius * np.sin(theta)
-
-df = pd.DataFrame({
-    "x": x,
-    "y": y,
-    "idx": indices,
-    "rand": np.random.randn(num_points),
-})
-
-st.altair_chart(alt.Chart(df, height=700, width=700)
-    .mark_point(filled=True)
-    .encode(
-        x=alt.X("x", axis=None),
-        y=alt.Y("y", axis=None),
-        color=alt.Color("idx", legend=None, scale=alt.Scale()),
-        size=alt.Size("rand", legend=None, scale=alt.Scale(range=[1, 150])),
-    ))
+# Run the app
+if __name__ == "__main__":
+    quiz_app()
