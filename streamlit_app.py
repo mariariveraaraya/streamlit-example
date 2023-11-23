@@ -9,7 +9,7 @@ import streamlit as st
 
 # Define the questions and answers
 questions = {
-"1. How do you access the Quest platform?": {
+"1. How do you access the QESD platform?": {
     "a) portal.azure.com": True,
     "b) portal.quest.com": False,
     "c) portal.synapse.com": False,
@@ -17,14 +17,14 @@ questions = {
 },
     "2. How is access organized in the platform?": {
         "a) By resource groups": True,
-        "b) By permission levels": False,
+        "b) By permission levels": True,
         "c) By user roles": False,
         "d) By data types": False
     }
 }
 # Create the quiz app
 def quiz_app():
-    st.title("Quiz App")
+    st.title("QESD Platform concepts")
     if "score" not in st.session_state:
         st.session_state.score = 0
     for i, (question, answers) in enumerate(questions.items()):
