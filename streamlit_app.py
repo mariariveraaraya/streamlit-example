@@ -7,7 +7,6 @@ import streamlit as st
 # Welcome
 """
 # Import the necessary library
-# Import the necessary library
 import streamlit as st
 
 # Define the questions and answers
