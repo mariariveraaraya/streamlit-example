@@ -28,14 +28,17 @@ questions = {
 # Create the quiz app
 def quiz_app():
     st.title("Quiz App")
+    score = 0
     for i, (question, answers) in enumerate(questions.items()):
         st.subheader(question)
         user_answer = st.radio("", list(answers.keys()), key=f"question_{i}")
         if st.button("Submit", key=f"button_{i}"):
             if answers[user_answer]:
                 st.success("Correct!")
+                score += 1
             else:
                 st.error("Incorrect. Try again.")
+    st.write(f"Your score is {score}/{len(questions)}")
 
 # Run the app
 if __name__ == "__main__":
