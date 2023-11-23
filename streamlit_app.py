@@ -23,15 +23,17 @@ questions = {
     }
 }
 # Create the quiz app
+
 def quiz_app():
-    st.title("QESD Platform concepts")
+    st.title("Quiz App")
     if "score" not in st.session_state:
         st.session_state.score = 0
     for i, (question, answers) in enumerate(questions.items()):
         st.subheader(question)
-        user_answer = st.radio("", list(answers.keys()), key=f"question_{i}")
+        user_answers = {option: st.checkbox(option, key=f"{i}_{option}") for option in answers.keys()}
         if st.button("Submit", key=f"button_{i}"):
-            if answers[user_answer]:
+            correct = all(user_answers[option] == correct for option, correct in answers.items())
+            if correct:
                 st.success("Correct!")
                 st.session_state.score += 1
             else:
