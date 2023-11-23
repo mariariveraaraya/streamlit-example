@@ -3,13 +3,13 @@ import streamlit as st
 
 # Define the questions and answers
 questions = {
-    "1. How do you access the QESD platform?": {
-        "a) portal.azure.com": True,
-        "b) portal.quest.com": False,
-        "c) portal.synapse.com": False,
-        "d) portal.access.quest": False
-    },
-    "2. How is access organized in the platform?": {
+    "1. What is the purpose of different permission levels in the platform?": {
+    "a) To control data cleanliness": False,
+    "b) To limit data access": True,
+    "c) To manage data backups": False,
+    "d) To monitor data usage": False
+},
+    "2. How is access control organized in the platform?": {
         "a) By resource groups": True,
         "b) By permission levels": True,
         "c) By user roles": False,
@@ -25,7 +25,7 @@ questions = {
 
 # Create the quiz app
 def quiz_app():
-    st.title("Quiz App")
+    st.title("Test your knowledge of QESD Platform fundamental concepts")
     if "score" not in st.session_state:
         st.session_state.score = 0
     user_answers = {}
