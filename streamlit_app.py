@@ -7,6 +7,7 @@ import streamlit as st
 # Welcome
 """
 # Import the necessary library
+# Import the necessary library
 import streamlit as st
 
 # Define the questions and answers
@@ -38,7 +39,12 @@ def quiz_app():
                 score += 1
             else:
                 st.error("Incorrect. Try again.")
-    st.write(f"Your score is {score}/{len(questions)}")
+    grade = (score / len(questions)) * 100
+    st.write(f"Your grade is {grade}%")
+    if grade >= 80:
+        st.write("Congratulations, you passed!")
+    else:
+        st.write("Sorry, you did not pass.")
 
 # Run the app
 if __name__ == "__main__":
