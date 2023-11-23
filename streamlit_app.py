@@ -29,8 +29,8 @@ questions = {
 }
 
 # Create the quiz app
-def quiz_app():
-    st.title("Quiz App")
+
+st.title("Quiz App")
     for question, answers in questions.items():
         st.subheader(question)
         user_answer = st.radio("", list(answers.keys()))
