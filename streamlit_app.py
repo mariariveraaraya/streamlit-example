@@ -39,7 +39,3 @@ def quiz_app():
                 st.success("Correct!")
             else:
                 st.error("Incorrect. Try again.")
-
-# Run the app
-if __name__ == "__main__":
-    quiz_app()
