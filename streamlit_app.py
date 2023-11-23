@@ -20,7 +20,14 @@ questions = {
         "b) By permission levels": True,
         "c) By user roles": False,
         "d) By data types": False
-    }
+    },
+
+    "3. Why would you access Synapse using Azure Data Studio instead of the browser?": {
+    "a) Azure Data Studio provides a rich SQL editor with syntax highlighting and IntelliSense": True,
+    "b) Azure Data Studio allows you to manage your data and your code in the same environment": True,
+    "c) Azure Data Studio supports the use of notebooks, which can contain live code, visualizations, and narrative text": True,
+    "d) Azure Data Studio requires less internet bandwidth than the browser": False
+}
 }
 # Create the quiz app
 
