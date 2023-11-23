@@ -23,20 +23,21 @@ questions = {
     }
 }
 # Create the quiz app
-# Create the quiz app
 def quiz_app():
     st.title("Quiz App")
-    user_answers = {}
-    for i, (question, answers) in enumerate(questions.items()):
+    correct_answers = 0
+    for question, answers in questions.items():
         st.subheader(question)
-        user_answers[question] = st.radio("", list(answers.keys()), key=f"question_{i}")
-    if None not in user_answers.values():
+        user_answer = st.radio("", list(answers.keys()))
         if st.button("Submit"):
-            score = sum(questions[question][answer] for question, answer in user_answers.items())
-            if score == len(questions):
-                st.success("All answers are correct!")
+            if answers[user_answer]:
+                st.success("Correct!")
+                correct_answers += 1
             else:
-                st.error(f"You got {score} out of {len(questions)} correct.")
+                st.error("Incorrect. Try again.")
+    if st.button("Calculate Grade"):
+        grade = (correct_answers / len(questions)) * 100
+        st.write(f"Your grade is {grade}%")
 
 # Run the app
 if __name__ == "__main__":
