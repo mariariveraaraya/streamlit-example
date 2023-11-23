@@ -12,6 +12,9 @@ forums](https://discuss.streamlit.io).
 
 In the meantime, below is an example of what you can do with just a few lines of code:
 """
+# Import the necessary library
+import streamlit as st
+
 # Define the questions and answers
 questions = {
     "What is 2 + 2?": {
@@ -29,13 +32,17 @@ questions = {
 }
 
 # Create the quiz app
-
-st.title("Quiz App")
-for question, answers in questions.items():
+def quiz_app():
+    st.title("Quiz App")
+    for i, (question, answers) in enumerate(questions.items()):
         st.subheader(question)
-        user_answer = st.radio("", list(answers.keys()))
-        if st.button("Submit"):
+        user_answer = st.radio("", list(answers.keys()), key=f"question_{i}")
+        if st.button("Submit", key=f"button_{i}"):
             if answers[user_answer]:
                 st.success("Correct!")
             else:
                 st.error("Incorrect. Try again.")
+
+# Run the app
+if __name__ == "__main__":
+    quiz_app()
