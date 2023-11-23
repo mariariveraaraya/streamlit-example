@@ -11,12 +11,12 @@ import streamlit as st
 
 # Define the questions and answers
 questions = {
-    "What is 2 + 2?": {
-        "1": False,
-        "2": False,
-        "3": False,
-        "4": True
-    },
+"1. How do you access the Quest platform?": {
+    "a) portal.azure.com": True,
+    "b) portal.quest.com": False,
+    "c) portal.synapse.com": False,
+    "d) portal.access.quest": False
+},
     "What is 3 * 3?": {
         "6": False,
         "9": True,
