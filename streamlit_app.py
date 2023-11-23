@@ -17,14 +17,25 @@ questions = {
     "c) portal.synapse.com": False,
     "d) portal.access.quest": False
 },
-    "What is 3 * 3?": {
-        "6": False,
-        "9": True,
-        "12": False,
-        "15": False
+    "2. How is access organized in the platform?": {
+        "a) By resource groups": True,
+        "b) By permission levels": False,
+        "c) By user roles": False,
+        "d) By data types": False
+    },
+    "3. What is the purpose of different permission levels in the platform?": {
+        "a) To control data cleanliness": False,
+        "b) To limit data access": True,
+        "c) To manage data backups": False,
+        "d) To monitor data usage": False
+    },
+    "4. Why is selecting the correct environment important?": {
+        "a) It affects resource availability": True,
+        "b) It determines the color theme of the platform": False,
+        "c) It affects data storage costs": False,
+        "d) It determines access permissions": False
     }
 }
-
 # Create the quiz app
 def quiz_app():
     st.title("Quiz App")
