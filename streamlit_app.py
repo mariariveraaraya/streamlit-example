@@ -37,8 +37,8 @@ def quiz_app():
         for question, answers in user_answers.items():
             correct = all(answers[option] == questions[question][option] for option in answers.keys())
             if correct:
-                st.session_state.score += 1 / sum(answers.values())
-        grade = (st.session_state.score / len(answers)) * 100
+                st.session_state.score += 1 / sum(questions[question].values())
+        grade = (st.session_state.score / len(questions)) * 100
         st.write(f"Your grade is {grade}%")
 
 # Run the app
