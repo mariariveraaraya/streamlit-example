@@ -24,6 +24,7 @@ questions = {
 }
 # Create the quiz app
 
+# Create the quiz app
 def quiz_app():
     st.title("Quiz App")
     if "score" not in st.session_state:
@@ -35,7 +36,7 @@ def quiz_app():
             correct = all(user_answers[option] == correct for option, correct in answers.items())
             if correct:
                 st.success("Correct!")
-                st.session_state.score += 1
+                st.session_state.score += 1 / sum(answers.values())
             else:
                 st.error("Incorrect. Try again.")
     grade = (st.session_state.score / len(questions)) * 100
