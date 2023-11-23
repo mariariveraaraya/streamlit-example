@@ -28,22 +28,19 @@ questions = {
 # Create the quiz app
 def quiz_app():
     st.title("Quiz App")
-    score = 0
+    if "score" not in st.session_state:
+        st.session_state.score = 0
     for i, (question, answers) in enumerate(questions.items()):
         st.subheader(question)
         user_answer = st.radio("", list(answers.keys()), key=f"question_{i}")
         if st.button("Submit", key=f"button_{i}"):
             if answers[user_answer]:
                 st.success("Correct!")
-                score += 1
+                st.session_state.score += 1
             else:
                 st.error("Incorrect. Try again.")
-    grade = (score / len(questions)) * 100
+    grade = (st.session_state.score / len(questions)) * 100
     st.write(f"Your grade is {grade}%")
-    if grade >= 80:
-        st.write("Congratulations, you passed!")
-    else:
-        st.write("Sorry, you did not pass.")
 
 # Run the app
 if __name__ == "__main__":
